@@ -39,6 +39,7 @@ intents:
   - bot_challenge
   - provide_location
   - greet
+  - buy_coffee
 
 forms:
   location_form:
@@ -57,6 +58,8 @@ responses:
     - text: Okay, I'm searching coffee shops for you!
   utter_location_slots:
     - text: You've entered {country}, {city}, {street}, {build_no} as your location.
+  utter_ask_location:
+    - text: Sure! Send me your location!
 
 actions:
   - action_process_location

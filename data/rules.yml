@@ -6,6 +6,11 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: Ask user location when he wants coffee
+  steps:
+  - intent: buy_coffee
+  - action: utter_ask_location
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge

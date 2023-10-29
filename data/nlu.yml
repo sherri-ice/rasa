@@ -22,6 +22,15 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    
+
+- intent: buy_coffee
+  examples: |
+    - I want to buy a coffee
+    - I want coffee
+    - where is the nearest coffee shop?
+    - I need coffee shops nearby
+    - coffee
 
 - intent: provide_location
   examples: |
@@ -33,3 +42,4 @@ nlu:
     - [Lavrushinsky lane](street), [17 building 2](build_no), [Moscow](city), [Russia](country)
     - [Bersenevskaya embankment](street), [6с3](build_no), [Moscow](city), [Russia](country)
     - [Ordynsky Tupik](street), [4](build_no), [Moscow](city), [Russia](country)
+    - [Golubiev](street), [22/1](build_no), [Moscow](city), [Russia](country)
