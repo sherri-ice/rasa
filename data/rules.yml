@@ -22,7 +22,7 @@ rules:
     - action: location_form
     - active_loop: location_form
 
-- rule: Submit location form
+- rule: Submit location form and activate coffee shop form
   condition:
     - active_loop: location_form
   steps:
@@ -31,7 +31,21 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: utter_location_slots
+
+    - action: utter_ask_coffee_shop_options
+    - action: coffee_shop_form
+    - active_loop: coffee_shop_form
+
+- rule: Submit coffee shop form
+  condition:
+    - active_loop: coffee_shop_form
+  steps:
+    - action: coffee_shop_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
     - action: utter_submit
+
 
 - rule: Interruption in location form
   condition:

@@ -5,6 +5,8 @@ entities:
   - city
   - street
   - build_no
+  - has_outside_sits
+  - is_open_now
 
 slots:
   country:
@@ -35,11 +37,39 @@ slots:
       - type: from_entity
         entity: build_no
 
-intents:
-  - bot_challenge
-  - provide_location
-  - greet
-  - buy_coffee
+  has_outside_sits:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        value: true
+        intent: affirm
+        conditions:
+          - active_loop: coffee_shop_form
+            requested_slot: has_outside_sits
+      - type: from_intent
+        value: false
+        intent: deny
+        conditions:
+          - active_loop: coffee_shop_form
+            requested_slot: has_outside_sits
+
+  is_open_now:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        value: true
+        intent: affirm
+        conditions:
+          - active_loop: coffee_shop_form
+            requested_slot: is_open_now
+      - type: from_intent
+        value: false
+        intent: deny
+        conditions:
+          - active_loop: coffee_shop_form
+            requested_slot: is_open_now
 
 forms:
   location_form:
@@ -49,13 +79,30 @@ forms:
       - street
       - build_no
 
+  coffee_shop_form:
+    required_slots:
+      - has_outside_sits
+      - is_open_now
+
+intents:
+  - bot_challenge
+  - provide_location
+  - greet
+  - buy_coffee
+  - affirm
+  - deny
+
 responses:
   utter_greet:
     - text: Hey!
   utter_iamabot:
     - text: I am a bot, powered by Rasa.
   utter_submit:
-    - text: Okay, I'm searching coffee shops for you!
+    - text: "Okay, I'm searching coffee shops for you with the following parameters:\n
+            Is open now?: {is_open_now} \n
+            Has outside sits?: {has_outside_sits}"
+  utter_ask_coffee_shop_options:
+    - text: Okay, now let's define criteria for the coffee shop
   utter_location_slots:
     - text: You've entered {country}, {city}, {street}, {build_no} as your location.
   utter_ask_location:
@@ -65,6 +112,8 @@ actions:
   - action_process_location
   - utter_greet
   - utter_submit
+  - action_ask_has_outside_sits
+  - action_ask_is_open_now
 
 session_config:
   session_expiration_time: 60

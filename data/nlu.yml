@@ -43,3 +43,13 @@ nlu:
     - [Bersenevskaya embankment](street), [6с3](build_no), [Moscow](city), [Russia](country)
     - [Ordynsky Tupik](street), [4](build_no), [Moscow](city), [Russia](country)
     - [Golubiev](street), [22/1](build_no), [Moscow](city), [Russia](country)
+
+- intent: affirm
+  examples: |
+    - yes
+    - yep
+
+- intent: deny
+  examples: |
+    - no
+    - nope
