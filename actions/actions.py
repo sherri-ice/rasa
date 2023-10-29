@@ -1,9 +1,11 @@
 from typing import Text, List, Dict
 
-from rasa_sdk import Tracker, Action
+from rasa_sdk import Tracker, Action, ValidationAction
 from rasa_sdk.events import EventType
 from rasa_sdk.executor import CollectingDispatcher
 
+
+# Actions for formatting yes/no buttons
 
 class AskForOutsideSitsAction(Action):
     def name(self) -> Text:
@@ -37,3 +39,8 @@ class AskForIsOpenAction(Action):
             ],
         )
         return []
+
+
+# Actions for location processing
+# class ValidateLocationSlots(ValidationAction):
+#     def validate_

@@ -34,15 +34,15 @@ nlu:
 
 - intent: provide_location
   examples: |
-    - I'm at [Poland](country), [Lodz](city), [Nawrockiego](street), [11](build_no)
-    - currently I'm located at [al. Wojska Polskiego](street) [207](build_no), 42-200 [Częstochowa](city), [Poland](country)
-    - [Helgolandsgade](street) [10](build_no), [København](city), [Denmark](country)
-    - [Viru](street) [3](build_no), [Tallinn](city), [Estonia](country)
-    - [Masina](street) [20](build_no), [Tallinn](city), [Estonia](country)
-    - [Lavrushinsky lane](street), [17 building 2](build_no), [Moscow](city), [Russia](country)
-    - [Bersenevskaya embankment](street), [6с3](build_no), [Moscow](city), [Russia](country)
-    - [Ordynsky Tupik](street), [4](build_no), [Moscow](city), [Russia](country)
-    - [Golubiev](street), [22/1](build_no), [Moscow](city), [Russia](country)
+    - I'm at [Poland](location), [Lodz](location), [Nawrockiego 11](location)
+    - currently I'm located at [al. Wojska Polskiego 207](location), 42-200 [Częstochowa](location), [Poland](location)
+    - [Helgolandsgade 10](location), [København](location), [Denmark](location)
+    - [Viru 3](location), [Tallinn](location), [Estonia](location)
+    - [Masina 20](location), [Tallinn](location), [Estonia](location)
+    - [Lavrushinsky lane 17 building 2](location), [Moscow](location), [Russia](location)
+    - [Bersenevskaya embankment 6c3](location), [Moscow](location), [Russia](location)
+    - [Ordynsky Tupik 4](location), [Moscow](location), [Russia](location)
+    - [Golubiev 22/1](location), [Moscow](location), [Russia](location)
 
 - intent: affirm
   examples: |

@@ -1,41 +1,17 @@
 version: '3.1'
 
 entities:
-  - country
-  - city
-  - street
-  - build_no
+  - location
   - has_outside_sits
   - is_open_now
 
 slots:
-  country:
-    type: text
-    influence_conversation: false
+  location:
+    type: list
+    influence_conversation: true
     mappings:
       - type: from_entity
-        entity: country
-
-  city:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: city
-
-  street:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: street
-
-  build_no:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: build_no
+        entity: location
 
   has_outside_sits:
     type: bool
@@ -74,10 +50,7 @@ slots:
 forms:
   location_form:
     required_slots:
-      - country
-      - city
-      - street
-      - build_no
+      - location
 
   coffee_shop_form:
     required_slots:
@@ -104,7 +77,7 @@ responses:
   utter_ask_coffee_shop_options:
     - text: Okay, now let's define criteria for the coffee shop
   utter_location_slots:
-    - text: You've entered {country}, {city}, {street}, {build_no} as your location.
+    - text: You've entered {location} as your location.
   utter_ask_location:
     - text: Sure! Send me your location!
 
