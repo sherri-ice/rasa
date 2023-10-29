@@ -1,0 +1,68 @@
+version: '3.1'
+
+entities:
+  - country
+  - city
+  - street
+  - build_no
+
+slots:
+  country:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: country
+
+  city:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: city
+
+  street:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: street
+
+  build_no:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: build_no
+
+intents:
+  - bot_challenge
+  - provide_location
+  - greet
+
+forms:
+  location_form:
+    required_slots:
+      - country
+      - city
+      - street
+      - build_no
+
+responses:
+  utter_greet:
+    - text: Hey!
+  utter_iamabot:
+    - text: I am a bot, powered by Rasa.
+  utter_submit:
+    - text: Okay, I'm searching coffee shops for you!
+  utter_location_slots:
+    - text: You've entered {country}, {city}, {street}, {build_no} as your location.
+
+actions:
+  - action_process_location
+  - utter_greet
+  - utter_submit
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,40 @@
+version: "3.1"
+
+rules:
+- rule: Say hey anytime the user greets
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Collect user's location
+  steps:
+    - intent: provide_location
+    - action: location_form
+    - active_loop: location_form
+
+- rule: Submit location form
+  condition:
+    - active_loop: location_form
+  steps:
+    - action: location_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_location_slots
+    - action: utter_submit
+
+- rule: Interruption in location form
+  condition:
+  - active_loop: location_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: location_form
+  - active_loop: location_form
